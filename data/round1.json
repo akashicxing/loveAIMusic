@@ -1,0 +1,55 @@
+{
+  "id": "round1",
+  "title": "告诉我们你们的故事",
+  "description": "让AI了解你们的爱情，创作专属情歌",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "names",
+      "label": "你们的名字（昵称也可以）",
+      "type": "text",
+      "required": true,
+      "placeholder": "例如：小明和小红",
+      "maxLength": 50
+    },
+    {
+      "id": "story",
+      "label": "分享你们最难忘的回忆",
+      "type": "textarea",
+      "required": true,
+      "placeholder": "可以是初次相遇、第一次约会、或是某个特别的时刻...",
+      "maxLength": 500
+    },
+    {
+      "id": "mood",
+      "label": "这首歌的情绪基调",
+      "type": "radio",
+      "required": true,
+      "options": [
+        { "value": "sweet", "label": "甜蜜温馨" },
+        { "value": "romantic", "label": "浪漫唯美" },
+        { "value": "passionate", "label": "热烈激情" },
+        { "value": "nostalgic", "label": "怀念感动" }
+      ]
+    },
+    {
+      "id": "keywords",
+      "label": "希望歌词中包含的关键词",
+      "type": "chips",
+      "required": true,
+      "placeholder": "输入关键词后按回车",
+      "minItems": 2,
+      "maxItems": 8,
+      "maxLengthPerItem": 10
+    },
+    {
+      "id": "duration",
+      "label": "在一起多久了？（月）",
+      "type": "number",
+      "required": false,
+      "min": 1,
+      "max": 600,
+      "placeholder": "例如：12"
+    }
+  ]
+}

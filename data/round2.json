@@ -1,0 +1,30 @@
+{
+  "id": "round2",
+  "title": "更多细节",
+  "description": "让歌曲更贴近你们的故事",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "special_place",
+      "label": "对你们意义重大的地方",
+      "type": "text",
+      "required": false,
+      "placeholder": "例如：第一次约会的咖啡厅",
+      "maxLength": 50
+    },
+    {
+      "id": "features",
+      "label": "你希望这首歌具备什么特点？（最多选3个）",
+      "type": "checkbox",
+      "required": true,
+      "maxSelect": 3,
+      "options": [
+        { "value": "poetic", "label": "诗意优美" },
+        { "value": "catchy", "label": "朗朗上口" },
+        { "value": "deep", "label": "意境深远" },
+        { "value": "simple", "label": "简单真挚" },
+        { "value": "metaphor", "label": "富有比喻" }
+      ]
+    }
+  ]
+}

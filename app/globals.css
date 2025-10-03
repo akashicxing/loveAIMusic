@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 270 50% 10%;
+    --foreground: 0 0% 100%;
+    --card: 270 40% 15%;
+    --card-foreground: 0 0% 98%;
+    --popover: 270 40% 15%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 340 82% 67%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 280 65% 70%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 270 30% 25%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 340 100% 95%;
+    --accent-foreground: 340 82% 40%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 270 30% 25%;
+    --input: 270 30% 25%;
+    --ring: 340 82% 67%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#1A0B2E] text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif SC', serif;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-pink-400 via-rose-400 to-purple-400 bg-clip-text text-transparent;
+  }
+
+  .bg-romantic {
+    background: linear-gradient(135deg, #1A0B2E 0%, #2D1B4E 50%, #1A0B2E 100%);
+  }
+
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20;
+  }
+
+  .glow-pink {
+    box-shadow: 0 0 20px rgba(255, 107, 157, 0.3), 0 0 40px rgba(255, 107, 157, 0.1);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(192, 132, 252, 0.3), 0 0 40px rgba(192, 132, 252, 0.1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
