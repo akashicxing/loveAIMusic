@@ -69,7 +69,7 @@ npm install          # 重新安装
 
 ### 修改音乐风格
 
-编辑 `public/data/musicStyles.json`:
+编辑 `data/musicStyles.json`:
 
 ```json
 {

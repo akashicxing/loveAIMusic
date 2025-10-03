@@ -148,7 +148,10 @@ lovesongs-ai/
 │
 ├── 📊 数据目录 (data/)
 │   ├── round1.json                ❓ 第一轮问题
-│   └── round2.json                ❓ 第二轮问题
+│   ├── round2.json                ❓ 第二轮问题
+│   ├── round1 copy.json           ❓ 第一轮问题备份
+│   ├── round2 copy.json           ❓ 第二轮问题备份
+│   └── musicStyles.json           🎵 音乐风格数据
 │
 ├── 🔧 工具目录
 │   ├── hooks/                     🪝 自定义 Hooks
@@ -161,8 +164,7 @@ lovesongs-ai/
 │       └── questions.ts
 │
 ├── 🌐 公共目录 (public/)
-│   └── data/
-│       └── musicStyles.json       🎵 音乐风格数据
+│   └── bj.png                     🖼️ 背景图片
 │
 └── ⚙️ 配置文件
     ├── package.json               📦 依赖配置

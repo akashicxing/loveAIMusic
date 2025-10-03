@@ -434,7 +434,7 @@ export default function MusicShowcase() {
   const [currentlyPlaying, setCurrentlyPlaying] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/data/musicStyles.json')
+    fetch('/api/music-styles')
       .then((res) => res.json())
       .then((data) => {
         const stylesWithLyrics = data.styles.map((style: any) => ({

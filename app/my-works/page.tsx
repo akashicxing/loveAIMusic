@@ -44,7 +44,7 @@ export default function MyWorksPage() {
 
   const loadWorks = async () => {
     try {
-      const response = await fetch('/data/musicStyles.json');
+      const response = await fetch('/api/music-styles');
       const data = await response.json();
 
       const work: Work = {

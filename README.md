@@ -205,7 +205,9 @@ lovesongs-ai/
 ├── data/                         # 数据文件
 │   ├── round1.json               # 第一轮问题
 │   ├── round2.json               # 第二轮问题
-│   └── musicStyles.json          # 音乐风格数据（多个位置）
+│   ├── round1 copy.json          # 第一轮问题备份
+│   ├── round2 copy.json          # 第二轮问题备份
+│   └── musicStyles.json          # 音乐风格数据
 │
 ├── hooks/                        # 自定义 Hooks
 │   └── use-toast.ts              # Toast 通知
@@ -220,8 +222,7 @@ lovesongs-ai/
 │   └── questions.ts              # 问题类型定义
 │
 ├── public/                       # 静态资源
-│   └── data/
-│       └── musicStyles.json
+│   └── bj.png                   # 背景图片
 │
 ├── .env.local                    # 环境变量（本地）
 ├── .gitignore                    # Git 忽略文件
@@ -348,7 +349,7 @@ module.exports = {
 
 ### 修改音乐风格数据
 
-编辑 `public/data/musicStyles.json` 或 `src/data/musicStyles.json`：
+编辑 `data/musicStyles.json`：
 
 ```json
 {

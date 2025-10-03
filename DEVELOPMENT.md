@@ -83,7 +83,7 @@ export async function POST(request: Request) {
 
 ### 4. 修改音乐风格
 
-编辑 `public/data/musicStyles.json`：
+编辑 `data/musicStyles.json`：
 
 ```json
 {
