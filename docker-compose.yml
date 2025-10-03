@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # 主应用
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_APP_ENV=development
+      - DATABASE_URL=postgresql://loveaimusic:password@db:5432/loveaimusic_dev
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    networks:
+      - loveaimusic-network
+
+  # PostgreSQL数据库
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=loveaimusic_dev
+      - POSTGRES_USER=loveaimusic
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - loveaimusic-network
+
+  # Redis缓存
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - loveaimusic-network
+
+  # 数据库管理工具 (可选)
+  adminer:
+    image: adminer:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - loveaimusic-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  loveaimusic-network:
+    driver: bridge

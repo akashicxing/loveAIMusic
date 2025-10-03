@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "env:check": "node scripts/check-env.js",
+    "env:setup": "cp ENV_TEMPLATE.txt .env.local && echo '✅ 已创建 .env.local 文件，请编辑并配置相应值'",
+    "env:validate": "npm run env:check && npm run typecheck"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

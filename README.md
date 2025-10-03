@@ -137,16 +137,30 @@ yarn install
 
 3. **配置环境变量**
 
-创建 `.env.local` 文件：
+```bash
+# 快速设置环境变量
+npm run env:setup
+
+# 检查环境变量配置
+npm run env:check
+```
+
+编辑 `.env.local` 文件，配置必要的环境变量：
 
 ```env
-# Supabase 配置（如果需要）
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+# 基础配置
+NEXT_PUBLIC_APP_NAME=为爱而歌
+NEXT_PUBLIC_APP_URL=http://localhost:3000
 
-# 其他 API 配置
-NEXT_PUBLIC_API_URL=your_api_url
+# AI服务配置
+SUNO_API_KEY=your_suno_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
+
+# 数据库配置 (可选，用于后台功能)
+DATABASE_URL=postgresql://username:password@localhost:5432/loveaimusic_dev
 ```
+
+详细的环境变量配置请参考 [ENV_CONFIG.md](ENV_CONFIG.md)
 
 4. **启动开发服务器**
 
