@@ -6,7 +6,7 @@
   "questions": [
     {
       "id": "coreConfession",
-      "label": "一句"你想被记住的告白主句"",
+      "label": "一句\"你想被记住的告白主句\"",
       "type": "text",
       "required": true,
       "placeholder": "不超过15字，如：我的乖乖鼠，十五年如一日",
@@ -24,7 +24,7 @@
     },
     {
       "id": "chorusVow",
-      "label": "你希望副歌传达的"承诺/誓言"是哪种？",
+      "label": "你希望副歌传达的\"承诺/誓言\"是哪种？",
       "type": "radio",
       "required": true,
       "options": [

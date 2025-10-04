@@ -79,7 +79,7 @@
     },
     {
       "id": "privateCode",
-      "label": "你们的口头禅或只属于彼此的"暗号"（可选）",
+      "label": "你们的口头禅或只属于彼此的\"暗号\"（可选）",
       "type": "text",
       "required": false,
       "placeholder": "如：小笨蛋、到点喝水啦",
