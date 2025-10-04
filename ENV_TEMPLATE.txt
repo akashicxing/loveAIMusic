@@ -36,8 +36,8 @@ SUNO_API_URL=https://api.suno.ai
 SUNO_WEBHOOK_SECRET=your_webhook_secret_here
 
 # OpenAI配置 (用于歌词生成)
-OPENAI_API_KEY=your_openai_api_key_here
-OPENAI_API_URL=https://api.yunwu.com/v1
+OPENAI_API_KEY=sk-555263dfcb11454d9981990398028a9c
+OPENAI_API_URL=https://api.deepseek.com/v1
 
 # 文件存储配置
 # 本地存储

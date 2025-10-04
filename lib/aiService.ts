@@ -70,7 +70,7 @@ class AIService {
       const response = await this.callOpenAI(prompt, {
         max_tokens: 1000,
         temperature: 0.8,
-        model: 'gpt-3.5-turbo'
+        model: 'deepseek-chat'
       });
 
       if (!response.success) {
@@ -115,7 +115,7 @@ class AIService {
       const response = await this.callOpenAI(prompt, {
         max_tokens: 1500,
         temperature: 0.7,
-        model: 'gpt-3.5-turbo'
+        model: 'deepseek-chat'
       });
 
       if (!response.success) {
@@ -208,7 +208,7 @@ class AIService {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          model: options.model || 'gpt-3.5-turbo',
+          model: options.model || 'deepseek-chat',
           messages: [
             {
               role: 'user',
