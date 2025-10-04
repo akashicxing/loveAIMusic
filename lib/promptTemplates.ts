@@ -1,0 +1,307 @@
+/**
+ * AI提示词模板系统
+ * 用于生成歌词和音乐的核心提示词
+ */
+
+export interface UserAnswers {
+  // 第一轮答案
+  recipientNickname?: string;
+  relationship?: string;
+  metYear?: number;
+  keyMoments?: string[];
+  memoryScenes?: string[];
+  coreTheme?: string;
+  privateCode?: string;
+  songTone?: string;
+  avoidList?: string;
+  
+  // 第二轮答案
+  coreConfession?: string;
+  mustImages?: string[];
+  chorusVow?: string;
+  verseFocus?: string;
+  factsLimit?: string;
+  moodAdjectives?: string[];
+  avoidConfirm?: string;
+}
+
+export interface MusicStyle {
+  id: string;
+  name: string;
+  englishName: string;
+  sunoPromptTemplate: string;
+  vocalSuggestions: string[];
+}
+
+/**
+ * 第一轮采集 → 基础歌词生成模板
+ */
+export function generateBasicLyricsPrompt(answers: UserAnswers): string {
+  const {
+    recipientNickname,
+    relationship,
+    metYear,
+    keyMoments = [],
+    memoryScenes = [],
+    coreTheme,
+    privateCode,
+    songTone,
+    avoidList
+  } = answers;
+
+  // 关系映射
+  const relationshipMap: Record<string, string> = {
+    'couple': '情侣',
+    'spouse': '夫妻',
+    'fiance': '未婚夫妻',
+    'crush': '暗恋对象',
+    'partners': '伴侣'
+  };
+
+  // 主题映射
+  const themeMap: Record<string, string> = {
+    'guard': '守护与陪伴',
+    'gratitude': '感恩与珍惜',
+    'reconcile': '和解与理解',
+    'confess': '告白与表白',
+    'rekindle': '重燃与新生',
+    'promise': '承诺与誓言',
+    'miss': '思念与牵挂'
+  };
+
+  // 基调映射
+  const toneMap: Record<string, string> = {
+    'gentle': '温柔细腻',
+    'passionate': '热烈深情',
+    'nostalgic': '怀旧感伤',
+    'firm': '坚定有力',
+    'playful': '俏皮活泼'
+  };
+
+  const prompt = `
+你是一位专业的中文歌词创作AI，请根据以下用户信息创作一首基础歌词框架：
+
+## 用户信息
+- 称呼对象：${recipientNickname || '未指定'}
+- 关系：${relationshipMap[relationship || ''] || '未指定'}
+- 相识年份：${metYear || '未指定'}
+- 重要节点：${keyMoments.join('、') || '无'}
+- 回忆场景：${memoryScenes.join('、') || '无'}
+- 核心主题：${themeMap[coreTheme || ''] || '未指定'}
+- 专属暗号：${privateCode || '无'}
+- 歌曲基调：${toneMap[songTone || ''] || '未指定'}
+- 避免内容：${avoidList || '无'}
+
+## 创作要求
+1. 创作一首中文情歌的基础歌词框架
+2. 包含主歌和副歌的基本结构
+3. 体现用户的核心主题和情感基调
+4. 融入具体的回忆场景和细节
+5. 语言要${toneMap[songTone || ''] || '温柔细腻'}
+6. 避免使用用户指定的敏感词汇
+7. 歌词要真挚感人，贴近用户的故事
+
+## 输出格式
+请直接输出歌词内容，不需要额外说明。歌词应该包含：
+- 主歌部分（2-3段）
+- 副歌部分（重复2次）
+- 每段4-6行，每行8-12字
+
+请开始创作：
+`;
+
+  return prompt.trim();
+}
+
+/**
+ * 第二轮采集 + 基础歌词 → 完整歌词+歌名生成模板
+ */
+export function generateCompleteLyricsPrompt(
+  answers: UserAnswers, 
+  basicLyrics: string
+): string {
+  const {
+    coreConfession,
+    mustImages = [],
+    chorusVow,
+    verseFocus,
+    factsLimit,
+    moodAdjectives = [],
+    avoidConfirm
+  } = answers;
+
+  // 誓言映射
+  const vowMap: Record<string, string> = {
+    'standBy': '不离不弃的陪伴',
+    'throughStorm': '风雨同舟的坚持',
+    'longTime': '来日方长的期待',
+    'growOld': '白头到老的承诺',
+    'againstWorld': '与世界对抗的勇气'
+  };
+
+  // 主歌重点映射
+  const focusMap: Record<string, string> = {
+    'memoryDetails': '回忆中的具体细节',
+    'herCharacter': '对方的性格特点',
+    'growthTogether': '共同成长的历程',
+    'dailyLife': '日常生活的烟火气'
+  };
+
+  const prompt = `
+你是一位专业的中文歌词创作AI，请根据用户补充的信息完善歌词并创作歌名：
+
+## 基础歌词
+${basicLyrics}
+
+## 用户补充信息
+- 核心告白句：${coreConfession || '未指定'}
+- 必须意象：${mustImages.join('、') || '无'}
+- 副歌誓言：${vowMap[chorusVow || ''] || '未指定'}
+- 主歌重点：${focusMap[verseFocus || ''] || '未指定'}
+- 事实限定：${factsLimit || '无'}
+- 氛围形容词：${moodAdjectives.join('、') || '无'}
+- 避免内容：${avoidConfirm || '无'}
+
+## 完善要求
+1. 在基础歌词基础上进行完善和优化
+2. 必须融入核心告白句："${coreConfession}"
+3. 必须包含指定的意象：${mustImages.join('、')}
+4. 副歌要体现${vowMap[chorusVow || ''] || '承诺'}的情感
+5. 主歌要重点描述${focusMap[verseFocus || ''] || '回忆细节'}
+6. 整体氛围要体现：${moodAdjectives.join('、')}
+7. 避免使用用户指定的敏感词汇
+8. 歌词要完整、流畅、感人
+
+## 输出格式
+请按以下格式输出：
+
+**歌名：** [创作一个贴切的歌名，4-8字]
+
+**完整歌词：**
+[主歌1]
+[主歌2]
+[副歌]
+[主歌3]
+[副歌]
+
+请开始创作：
+`;
+
+  return prompt.trim();
+}
+
+/**
+ * 歌词+歌名+音乐风格 → SunoAI音频生成模板
+ */
+export function generateSunoPrompt(
+  lyrics: string,
+  songTitle: string,
+  musicStyle: MusicStyle,
+  vocalType: string = 'gentle female'
+): string {
+  // 替换音乐风格模板中的占位符
+  let sunoPrompt = musicStyle.sunoPromptTemplate;
+  
+  // 替换演唱类型占位符
+  sunoPrompt = sunoPrompt.replace(/\[VOCAL_TYPE\]/g, vocalType);
+  
+  // 添加歌词和歌名信息
+  const enhancedPrompt = `
+${sunoPrompt}
+
+**歌名：** ${songTitle}
+
+**歌词：**
+${lyrics}
+
+**特殊要求：**
+- 确保歌词与音乐风格完美匹配
+- 演唱要体现歌词的情感深度
+- 音乐编排要突出${musicStyle.name}的特色
+- 整体效果要专业、感人、易记
+
+请生成高质量的音频文件。
+`;
+
+  return enhancedPrompt.trim();
+}
+
+/**
+ * 获取推荐的演唱类型
+ */
+export function getRecommendedVocalType(answers: UserAnswers): string {
+  const { songTone, relationship } = answers;
+  
+  // 根据歌曲基调和关系推荐演唱类型
+  if (songTone === 'gentle') {
+    return 'gentle female';
+  } else if (songTone === 'passionate') {
+    return 'passionate male';
+  } else if (songTone === 'nostalgic') {
+    return 'melancholic female';
+  } else if (songTone === 'firm') {
+    return 'strong male';
+  } else if (songTone === 'playful') {
+    return 'cheerful female';
+  }
+  
+  // 默认推荐
+  return 'gentle female';
+}
+
+/**
+ * 验证用户答案的完整性
+ */
+export function validateUserAnswers(answers: UserAnswers, round: 1 | 2): string[] {
+  const errors: string[] = [];
+  
+  if (round === 1) {
+    if (!answers.recipientNickname) errors.push('称呼/昵称不能为空');
+    if (!answers.relationship) errors.push('关系类型不能为空');
+    if (!answers.memoryScenes || answers.memoryScenes.length < 2) {
+      errors.push('至少需要提供2个回忆场景');
+    }
+    if (!answers.coreTheme) errors.push('核心主题不能为空');
+    if (!answers.songTone) errors.push('歌曲基调不能为空');
+  } else if (round === 2) {
+    if (!answers.coreConfession) errors.push('核心告白句不能为空');
+    if (!answers.mustImages || answers.mustImages.length < 3) {
+      errors.push('必须提供3个意象或细节');
+    }
+    if (!answers.chorusVow) errors.push('副歌誓言类型不能为空');
+    if (!answers.verseFocus) errors.push('主歌重点不能为空');
+    if (!answers.moodAdjectives || answers.moodAdjectives.length < 3) {
+      errors.push('必须提供3个氛围形容词');
+    }
+  }
+  
+  return errors;
+}
+
+/**
+ * 生成AI交互的上下文信息
+ */
+export function generateContextInfo(answers: UserAnswers): string {
+  const {
+    recipientNickname,
+    relationship,
+    metYear,
+    keyMoments = [],
+    memoryScenes = [],
+    coreTheme,
+    privateCode,
+    songTone
+  } = answers;
+
+  return `
+用户信息摘要：
+- 对象：${recipientNickname}
+- 关系：${relationship}
+- 相识：${metYear}年
+- 重要时刻：${keyMoments.join('、')}
+- 回忆场景：${memoryScenes.join('、')}
+- 核心主题：${coreTheme}
+- 专属暗号：${privateCode || '无'}
+- 歌曲基调：${songTone}
+`.trim();
+}

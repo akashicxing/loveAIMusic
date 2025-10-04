@@ -9,7 +9,7 @@ export async function GET(
   try {
     const { round } = params;
 
-    const fileName = round.includes('copy') ? `${round}.json` : `${round} copy.json`;
+    const fileName = `${round}.json`;
     const filePath = path.join(process.cwd(), 'data', fileName);
     const fileContents = await readFile(filePath, 'utf8');
     const data = JSON.parse(fileContents);
