@@ -195,22 +195,49 @@ export default function QuestionForm({ question, value, onChange, error }: Quest
               </AnimatePresence>
             </div>
 
-            <input
-              type="text"
-              value={chipInput}
-              onChange={(e) => setChipInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder={question.placeholder}
-              maxLength={question.maxLengthPerItem}
-              disabled={question.maxItems ? chips.length >= question.maxItems : false}
-              className="w-full px-6 py-4 bg-white/10 border-2 border-white/20 rounded-2xl text-white placeholder-white/40 focus:outline-none focus:border-pink-400 transition-all backdrop-blur-sm text-lg disabled:opacity-50 disabled:cursor-not-allowed"
-            />
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={chipInput}
+                onChange={(e) => setChipInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder={question.placeholder}
+                maxLength={question.maxLengthPerItem}
+                disabled={question.maxItems ? chips.length >= question.maxItems : false}
+                className="flex-1 px-6 py-4 bg-white/10 border-2 border-white/20 rounded-2xl text-white placeholder-white/40 focus:outline-none focus:border-pink-400 transition-all backdrop-blur-sm text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  if (chipInput.trim()) {
+                    if (question.maxItems && chips.length >= question.maxItems) {
+                      return;
+                    }
+                    if (
+                      question.maxLengthPerItem &&
+                      chipInput.trim().length > question.maxLengthPerItem
+                    ) {
+                      return;
+                    }
+                    if (!chips.includes(chipInput.trim())) {
+                      onChange([...chips, chipInput.trim()]);
+                      setChipInput('');
+                    }
+                  }
+                }}
+                disabled={!chipInput.trim() || (question.maxItems ? chips.length >= question.maxItems : false)}
+                className="px-6 py-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-2xl font-medium hover:from-pink-600 hover:to-purple-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                添加
+              </button>
+            </div>
 
             <div className="flex justify-between text-sm text-pink-200">
               <span>
                 {question.minItems && `最少 ${question.minItems} 个`}
                 {question.minItems && question.maxItems && ' • '}
                 {question.maxItems && `最多 ${question.maxItems} 个`}
+                <span className="ml-2 text-white/60">（输入后按回车或点击添加按钮）</span>
               </span>
               <span>已添加 {chips.length} 个</span>
             </div>
