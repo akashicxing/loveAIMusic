@@ -57,7 +57,8 @@ export const useFormStore = create<FormState>()(
           hasDraft: true,
         })),
       completeRound1: async () => {
-        const round1Answers = { ...get().answers };
+        const currentState = get();
+        const round1Answers = { ...currentState.answers };
         
         // 保存第一轮答案
         set((state) => ({
