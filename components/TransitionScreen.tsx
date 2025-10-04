@@ -2,12 +2,37 @@
 
 import { motion } from 'framer-motion';
 import { Heart, Sparkles, ChevronRight } from 'lucide-react';
+import SongStructureDisplay from './SongStructureDisplay';
+
+interface SongStructure {
+  songTitles: string[];
+  versionA: {
+    structure: string;
+    examples: string[];
+  };
+  versionB: {
+    structure: string;
+    examples: string[];
+  };
+}
 
 interface TransitionScreenProps {
   onContinue: () => void;
+  songStructure?: SongStructure | null;
+  selectedTitle?: string;
+  selectedVersion?: 'A' | 'B';
+  onSelectTitle?: (title: string) => void;
+  onSelectVersion?: (version: 'A' | 'B') => void;
 }
 
-export default function TransitionScreen({ onContinue }: TransitionScreenProps) {
+export default function TransitionScreen({ 
+  onContinue, 
+  songStructure, 
+  selectedTitle, 
+  selectedVersion, 
+  onSelectTitle, 
+  onSelectVersion 
+}: TransitionScreenProps) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -63,20 +88,37 @@ export default function TransitionScreen({ onContinue }: TransitionScreenProps) 
             你们的故事真美好
           </p>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="glass-card rounded-2xl p-8 mx-auto max-w-md"
-          >
-            <p className="text-lg text-white/80 leading-relaxed">
-              我们已经了解了你们爱情的轮廓
-              <br />
-              接下来，让我们收集更多细节
-              <br />
-              让这首歌更加独特
-            </p>
-          </motion.div>
+          {songStructure ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="max-w-6xl mx-auto"
+            >
+              <SongStructureDisplay
+                structure={songStructure}
+                onSelectTitle={onSelectTitle || (() => {})}
+                onSelectVersion={onSelectVersion || (() => {})}
+                selectedTitle={selectedTitle || songStructure.songTitles[0] || ''}
+                selectedVersion={selectedVersion || 'A'}
+              />
+            </motion.div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="glass-card rounded-2xl p-8 mx-auto max-w-md"
+            >
+              <p className="text-lg text-white/80 leading-relaxed">
+                我们已经了解了你们爱情的轮廓
+                <br />
+                接下来，让我们收集更多细节
+                <br />
+                让这首歌更加独特
+              </p>
+            </motion.div>
+          )}
         </motion.div>
 
         <motion.button

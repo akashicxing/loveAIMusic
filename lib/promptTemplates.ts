@@ -34,9 +34,9 @@ export interface MusicStyle {
 }
 
 /**
- * 第一轮采集 → 基础歌词生成模板
+ * 第一轮采集 → 歌名备选和结构设计模板
  */
-export function generateBasicLyricsPrompt(answers: UserAnswers): string {
+export function generateSongStructurePrompt(answers: UserAnswers): string {
   const {
     recipientNickname,
     relationship,
@@ -79,7 +79,7 @@ export function generateBasicLyricsPrompt(answers: UserAnswers): string {
   };
 
   const prompt = `
-你是一位专业的中文歌词创作AI，请根据以下用户信息创作一首基础歌词框架：
+你是一位专业的中文歌词创作AI，请根据以下用户信息提供歌名备选和歌词结构设计：
 
 ## 用户信息
 - 称呼对象：${recipientNickname || '未指定'}
@@ -93,19 +93,58 @@ export function generateBasicLyricsPrompt(answers: UserAnswers): string {
 - 避免内容：${avoidList || '无'}
 
 ## 创作要求
-1. 创作一首中文情歌的基础歌词框架
-2. 包含主歌和副歌的基本结构
-3. 体现用户的核心主题和情感基调
-4. 融入具体的回忆场景和细节
-5. 语言要${toneMap[songTone || ''] || '温柔细腻'}
-6. 避免使用用户指定的敏感词汇
-7. 歌词要真挚感人，贴近用户的故事
+请提供以下三个部分：
+
+### 1. 歌名备选（10个不同方向）
+提供10个不同方向的歌名备选，体现用户故事的不同侧面，要求：
+- 每个歌名4-8字
+- 体现${themeMap[coreTheme || ''] || '核心主题'}
+- 语言${toneMap[songTone || ''] || '温柔细腻'}
+- 避免使用用户指定的敏感词汇
+
+### 2. 歌词整体结构设计（2个版本）
+提供两个不同版本的结构设计：
+
+**Version A（故事型）**：
+- 基于用户的具体回忆场景设计
+- 体现时间线或情感发展
+- 适合${toneMap[songTone || ''] || '温柔'}的基调
+
+**Version B（情感型）**：
+- 基于核心主题和情感层次设计
+- 体现情感深度和变化
+- 适合更深层的表达
+
+### 3. 主歌画面举例
+为每个版本提供2-3个主歌的具体画面示例：
+- 每段4行，每行8-12字
+- 融入用户的回忆场景和细节
+- 体现${toneMap[songTone || ''] || '温柔细腻'}的语言风格
+- 避免使用用户指定的敏感词汇
 
 ## 输出格式
-请直接输出歌词内容，不需要额外说明。歌词应该包含：
-- 主歌部分（2-3段）
-- 副歌部分（重复2次）
-- 每段4-6行，每行8-12字
+请按以下格式输出：
+
+**歌名备选：**
+1. [歌名1]（默认推荐）
+2. [歌名2]
+3. [歌名3]
+...
+10. [歌名10]
+
+**Version A（故事型）结构：**
+[详细结构说明]
+
+**Version A 主歌画面举例：**
+主歌1：[具体歌词示例]
+主歌2：[具体歌词示例]
+
+**Version B（情感型）结构：**
+[详细结构说明]
+
+**Version B 主歌画面举例：**
+主歌1：[具体歌词示例]
+主歌2：[具体歌词示例]
 
 请开始创作：
 `;

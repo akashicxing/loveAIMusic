@@ -60,12 +60,12 @@ class AIService {
   }
 
   /**
-   * 生成基础歌词
+   * 生成歌名备选和结构设计
    */
-  async generateBasicLyrics(answers: UserAnswers): Promise<AIResponse<LyricsResponse>> {
+  async generateSongStructure(answers: UserAnswers): Promise<AIResponse<any>> {
     try {
-      const { generateBasicLyricsPrompt } = await import('./promptTemplates');
-      const prompt = generateBasicLyricsPrompt(answers);
+      const { generateSongStructurePrompt } = await import('./promptTemplates');
+      const prompt = generateSongStructurePrompt(answers);
 
       const response = await this.callOpenAI(prompt, {
         max_tokens: 1000,
@@ -77,19 +77,12 @@ class AIService {
         return response;
       }
 
-      // 解析AI返回的歌词
-      const lyrics = this.parseLyrics(response.data.choices[0].message.content);
+      // 解析AI返回的结构设计
+      const structure = this.parseSongStructure(response.data.choices[0].message.content);
       
       return {
         success: true,
-        data: {
-          lyrics: lyrics.content,
-          metadata: {
-            style: answers.songTone || 'gentle',
-            mood: answers.coreTheme || 'love',
-            length: lyrics.content.length
-          }
-        },
+        data: structure,
         usage: response.usage
       };
     } catch (error) {
@@ -287,17 +280,58 @@ class AIService {
   }
 
   /**
-   * 解析基础歌词
+   * 解析歌名备选和结构设计
    */
-  private parseLyrics(content: string): { content: string } {
-    // 移除可能的格式标记，提取纯歌词内容
-    const cleanContent = content
-      .replace(/```[\s\S]*?```/g, '') // 移除代码块
-      .replace(/\*\*.*?\*\*/g, '') // 移除粗体标记
-      .replace(/#{1,6}\s*/g, '') // 移除标题标记
-      .trim();
+  private parseSongStructure(content: string): any {
+    const lines = content.split('\n');
+    const result: any = {
+      songTitles: [],
+      versionA: { structure: '', examples: [] },
+      versionB: { structure: '', examples: [] }
+    };
 
-    return { content: cleanContent };
+    let currentSection = '';
+    let currentVersion = '';
+
+    for (const line of lines) {
+      const trimmedLine = line.trim();
+      
+      if (trimmedLine.includes('歌名备选')) {
+        currentSection = 'titles';
+        continue;
+      } else if (trimmedLine.includes('Version A')) {
+        currentSection = 'versionA';
+        currentVersion = 'A';
+        continue;
+      } else if (trimmedLine.includes('Version B')) {
+        currentSection = 'versionB';
+        currentVersion = 'B';
+        continue;
+      }
+
+      if (currentSection === 'titles' && /^\d+\./.test(trimmedLine)) {
+        const title = trimmedLine.replace(/^\d+\.\s*/, '').replace(/（默认推荐）/, '').trim();
+        if (title) {
+          result.songTitles.push(title);
+        }
+      } else if (currentSection === 'versionA' || currentSection === 'versionB') {
+        if (trimmedLine.includes('结构：')) {
+          // 结构说明
+          const structure = trimmedLine.replace(/.*结构：/, '').trim();
+          if (structure) {
+            result[`version${currentVersion}`].structure = structure;
+          }
+        } else if (trimmedLine.includes('主歌') && trimmedLine.includes('：')) {
+          // 主歌示例
+          const example = trimmedLine.replace(/.*：/, '').trim();
+          if (example) {
+            result[`version${currentVersion}`].examples.push(example);
+          }
+        }
+      }
+    }
+
+    return result;
   }
 
   /**

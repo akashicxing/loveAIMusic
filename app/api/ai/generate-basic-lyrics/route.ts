@@ -23,12 +23,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 生成基础歌词
-    const result = await aiService.generateBasicLyrics(answers);
+    // 生成歌名备选和结构设计
+    const result = await aiService.generateSongStructure(answers);
 
     if (!result.success) {
       return NextResponse.json(
-        { error: result.error || '生成基础歌词失败' },
+        { error: result.error || '生成歌名和结构失败' },
         { status: 500 }
       );
     }

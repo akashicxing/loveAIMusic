@@ -24,6 +24,9 @@ export default function CreatePage() {
     answers,
     round1Answers,
     round2Answers,
+    songStructure,
+    selectedTitle,
+    selectedVersion,
     lastSaved,
     hasDraft,
     setAnswer,
@@ -34,6 +37,8 @@ export default function CreatePage() {
     setStage,
     completeRound1,
     completeRound2,
+    setSelectedTitle,
+    setSelectedVersion,
     resetForm,
     clearDraft,
     goToQuestion,
@@ -138,11 +143,18 @@ export default function CreatePage() {
       <div className="relative">
         <RomanticBackground />
         <div className="relative z-10">
-          <TransitionScreen onContinue={() => {
-            setCurrentRound(2);
-            setCurrentStep(0);
-            setStage('round2');
-          }} />
+          <TransitionScreen 
+            onContinue={() => {
+              setCurrentRound(2);
+              setCurrentStep(0);
+              setStage('round2');
+            }}
+            songStructure={songStructure}
+            selectedTitle={selectedTitle}
+            selectedVersion={selectedVersion}
+            onSelectTitle={setSelectedTitle}
+            onSelectVersion={setSelectedVersion}
+          />
         </div>
       </div>
     );
