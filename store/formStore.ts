@@ -34,7 +34,7 @@ interface FormState {
 
 export const useFormStore = create<FormState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       currentStep: 0,
       currentRound: 1,
       stage: 'round1',
