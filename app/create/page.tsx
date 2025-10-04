@@ -75,8 +75,17 @@ export default function CreatePage() {
         fetch('/api/questions/round2'),
       ]);
 
+      if (!round1Response.ok || !round2Response.ok) {
+        throw new Error('API请求失败');
+      }
+
       const round1 = await round1Response.json();
       const round2 = await round2Response.json();
+
+      // 验证数据格式
+      if (!round1.questions || !round2.questions) {
+        throw new Error('数据格式错误');
+      }
 
       setRound1Data(round1);
       setRound2Data(round2);
@@ -191,13 +200,26 @@ export default function CreatePage() {
   }
 
   const currentRoundData = currentRound === 1 ? round1Data : round2Data;
+  
+  // 安全检查：确保数据已加载
+  if (!currentRoundData || !currentRoundData.questions) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-pink-500 mx-auto mb-4"></div>
+          <p className="text-gray-600">加载中...</p>
+        </div>
+      </div>
+    );
+  }
+  
   const currentQuestion = currentRoundData.questions[currentStep];
   const isLastStep = currentStep === currentRoundData.questions.length - 1;
-  const totalQuestions = round1Data.questions.length + round2Data.questions.length;
+  const totalQuestions = (round1Data?.questions?.length || 0) + (round2Data?.questions?.length || 0);
   const currentOverallStep =
     currentRound === 1
       ? currentStep
-      : round1Data.questions.length + currentStep;
+      : (round1Data?.questions?.length || 0) + currentStep;
 
   const validateQuestion = (question: Question, value: any): string | null => {
     if (question.required) {
