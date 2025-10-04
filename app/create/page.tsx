@@ -138,6 +138,103 @@ export default function CreatePage() {
     );
   }
 
+  if (stage === 'generating') {
+    return (
+      <div className="relative">
+        <RomanticBackground />
+        <div className="relative z-10 min-h-screen flex items-center justify-center">
+          <div className="text-center space-y-8">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+              className="flex justify-center gap-6"
+            >
+              <motion.div
+                animate={{
+                  y: [0, -20, 0],
+                  rotate: [0, 10, -10, 0],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatDelay: 1,
+                }}
+              >
+                <Heart className="w-24 h-24 text-pink-400 fill-pink-400" />
+              </motion.div>
+              <motion.div
+                animate={{
+                  scale: [1, 1.3, 1],
+                  rotate: [0, 180, 360],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                }}
+              >
+                <Sparkles className="w-24 h-24 text-purple-400" />
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="space-y-6"
+            >
+              <h1 className="text-5xl md:text-7xl font-bold text-gradient">
+                AI正在创作中...
+              </h1>
+
+              <p className="text-2xl md:text-3xl text-pink-200">
+                为你们的故事谱写旋律
+              </p>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+                className="glass-card rounded-2xl p-8 mx-auto max-w-md"
+              >
+                <p className="text-lg text-white/80 leading-relaxed">
+                  正在分析你们的故事
+                  <br />
+                  生成歌名备选和结构设计
+                  <br />
+                  请稍候...
+                </p>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="flex justify-center gap-2"
+            >
+              {[0, 1, 2].map((i) => (
+                <motion.div
+                  key={i}
+                  className="w-3 h-3 rounded-full bg-pink-400"
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.3, 1, 0.3],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    delay: i * 0.2,
+                  }}
+                />
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (stage === 'transition') {
     return (
       <div className="relative">
