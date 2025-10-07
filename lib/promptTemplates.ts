@@ -123,28 +123,33 @@ export function generateSongStructurePrompt(answers: UserAnswers): string {
 - 避免使用用户指定的敏感词汇
 
 ## 输出格式
-请按以下格式输出：
+请严格按照以下格式输出，不要添加其他内容：
 
 **歌名备选：**
 1. [歌名1]（默认推荐）
 2. [歌名2]
 3. [歌名3]
-...
+4. [歌名4]
+5. [歌名5]
+6. [歌名6]
+7. [歌名7]
+8. [歌名8]
+9. [歌名9]
 10. [歌名10]
 
 **Version A（故事型）结构：**
-[详细结构说明]
+[详细结构说明，包含各个部分的安排和情感发展]
 
 **Version A 主歌画面举例：**
-主歌1：[具体歌词示例]
-主歌2：[具体歌词示例]
+主歌1：[具体歌词示例，4行，每行8-12字]
+主歌2：[具体歌词示例，4行，每行8-12字]
 
 **Version B（情感型）结构：**
-[详细结构说明]
+[详细结构说明，包含情感层次和表达方式]
 
 **Version B 主歌画面举例：**
-主歌1：[具体歌词示例]
-主歌2：[具体歌词示例]
+主歌1：[具体歌词示例，4行，每行8-12字]
+主歌2：[具体歌词示例，4行，每行8-12字]
 
 请开始创作：
 `;
@@ -157,7 +162,10 @@ export function generateSongStructurePrompt(answers: UserAnswers): string {
  */
 export function generateCompleteLyricsPrompt(
   answers: UserAnswers, 
-  basicLyrics: string
+  round1Answers: UserAnswers,
+  selectedTitle?: string | null,
+  selectedVersion?: 'A' | 'B' | null,
+  songStructure?: any | null
 ): string {
   const {
     coreConfession,
@@ -187,41 +195,80 @@ export function generateCompleteLyricsPrompt(
   };
 
   const prompt = `
-你是一位专业的中文歌词创作AI，请根据用户补充的信息完善歌词并创作歌名：
+你是一位专业的中文歌词创作AI，请根据用户信息创作完整歌词：
 
-## 基础歌词
-${basicLyrics}
+## 用户故事背景
+- 称呼对象：${round1Answers.recipientNickname || '未指定'}
+- 关系：${round1Answers.relationship || '未指定'}
+- 相识年份：${round1Answers.metYear || '未指定'}
+- 重要节点：${round1Answers.keyMoments?.join('、') || '无'}
+- 回忆场景：${round1Answers.memoryScenes?.join('、') || '无'}
+- 核心主题：${round1Answers.coreTheme || '未指定'}
+- 歌曲基调：${round1Answers.songTone || '未指定'}
 
-## 用户补充信息
+## 已确定的歌名和结构
+- 歌名：${selectedTitle || '未选择'}（必须使用这个歌名）
+- 版本：${selectedVersion || '未选择'}
+
+## 选中的歌曲结构设计
+${selectedVersion === 'A' && songStructure?.versionA ? `
+**Version A 结构：**
+${songStructure.versionA.structure}
+
+**Version A 主歌示例：**
+${songStructure.versionA.examples?.join('\n\n') || '无示例'}
+` : ''}
+${selectedVersion === 'B' && songStructure?.versionB ? `
+**Version B 结构：**
+${songStructure.versionB.structure}
+
+**Version B 主歌示例：**
+${songStructure.versionB.examples?.join('\n\n') || '无示例'}
+` : ''}
+
+## 歌词创作要求
 - 核心告白句：${coreConfession || '未指定'}
 - 必须意象：${mustImages.join('、') || '无'}
 - 副歌誓言：${vowMap[chorusVow || ''] || '未指定'}
 - 主歌重点：${focusMap[verseFocus || ''] || '未指定'}
-- 事实限定：${factsLimit || '无'}
 - 氛围形容词：${moodAdjectives.join('、') || '无'}
 - 避免内容：${avoidConfirm || '无'}
 
-## 完善要求
-1. 在基础歌词基础上进行完善和优化
+## 创作要求
+1. 必须使用指定的歌名：${selectedTitle}
 2. 必须融入核心告白句："${coreConfession}"
 3. 必须包含指定的意象：${mustImages.join('、')}
 4. 副歌要体现${vowMap[chorusVow || ''] || '承诺'}的情感
 5. 主歌要重点描述${focusMap[verseFocus || ''] || '回忆细节'}
 6. 整体氛围要体现：${moodAdjectives.join('、')}
 7. 避免使用用户指定的敏感词汇
-8. 歌词要完整、流畅、感人
+8. 歌词要完整、流畅、感人，符合${round1Answers.songTone || '温柔'}的基调
 
-## 输出格式
-请按以下格式输出：
+## 输出格式要求
+请严格按照以下格式输出，不要添加任何其他内容：
 
-**歌名：** [创作一个贴切的歌名，4-8字]
+**歌名：**
+${selectedTitle}
 
 **完整歌词：**
-[主歌1]
-[主歌2]
-[副歌]
-[主歌3]
-[副歌]
+请按照选中的${selectedVersion}版本结构来创作完整歌词，参考上面的结构设计和主歌示例。
+
+${selectedVersion === 'A' && songStructure?.versionA ? `
+按照Version A的结构：${songStructure.versionA.structure}
+` : ''}
+${selectedVersion === 'B' && songStructure?.versionB ? `
+按照Version B的结构：${songStructure.versionB.structure}
+` : ''}
+
+每行歌词8-12字，确保结构完整、情感连贯。
+
+## 重要提醒
+1. 必须使用指定的歌名：${selectedTitle}
+2. 每行歌词必须是8-12字
+3. 必须包含核心告白句："${coreConfession || '未指定'}"
+4. 必须包含指定意象：${mustImages.join('、') || '无'}
+5. 副歌要体现${vowMap[chorusVow || ''] || '承诺'}的情感
+6. 整体氛围要体现：${moodAdjectives.join('、') || '无'}
 
 请开始创作：
 `;

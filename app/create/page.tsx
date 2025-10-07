@@ -10,6 +10,7 @@ import QuestionForm from '@/components/QuestionForm';
 import TransitionScreen from '@/components/TransitionScreen';
 import SummaryPage from '@/components/SummaryPage';
 import DraftRecoveryDialog from '@/components/DraftRecoveryDialog';
+import MusicStyleSelector from '@/components/MusicStyleSelector';
 import { useFormStore } from '@/store/formStore';
 import { QuestionRound, Question } from '@/types/questions';
 import { useToast } from '@/hooks/use-toast';
@@ -27,6 +28,10 @@ export default function CreatePage() {
     songStructure,
     selectedTitle,
     selectedVersion,
+    completeLyrics,
+    finalTitle,
+    isEditingLyrics,
+    selectedMusicStyle,
     lastSaved,
     hasDraft,
     setAnswer,
@@ -39,6 +44,10 @@ export default function CreatePage() {
     completeRound2,
     setSelectedTitle,
     setSelectedVersion,
+    generateFinalLyrics,
+    updateCompleteLyrics,
+    setEditingLyrics,
+    setSelectedMusicStyle,
     resetForm,
     clearDraft,
     goToQuestion,
@@ -268,17 +277,22 @@ export default function CreatePage() {
             round1Answers={round1Answers}
             round2Answers={round2Answers}
             onEdit={goToQuestion}
-            onGenerate={() => {
-              setStage('complete');
-              clearDraft();
-              toast({
-                title: '开始生成情歌 🎵',
-                description: '正在为你创作专属旋律...',
-              });
-              console.log('Generation Data:', {
-                round1: round1Answers,
-                round2: round2Answers,
-              });
+            onGenerate={async () => {
+              try {
+                await generateFinalLyrics();
+                clearDraft();
+                toast({
+                  title: '开始生成情歌 🎵',
+                  description: '正在为你创作专属旋律...',
+                });
+              } catch (error) {
+                console.error('生成歌词失败:', error);
+                toast({
+                  title: '生成失败',
+                  description: '请重试或联系客服',
+                  variant: 'destructive',
+                });
+              }
             }}
           />
         </div>
@@ -288,22 +302,167 @@ export default function CreatePage() {
 
   if (stage === 'complete') {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen">
         <RomanticBackground />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="text-center space-y-6 relative z-10"
-        >
+        <div className="relative z-10 container mx-auto px-4 py-8">
           <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center space-y-8"
           >
-            <Heart className="w-24 h-24 text-pink-400 fill-pink-400 mx-auto" />
+            <div className="space-y-4">
+              <Heart className="w-16 h-16 text-pink-400 fill-pink-400 mx-auto" />
+              <h1 className="text-4xl font-bold text-gradient">你们的专属情歌</h1>
+              <h2 className="text-2xl font-semibold text-pink-300">{finalTitle || '未知歌名'}</h2>
+            </div>
+            
+            {completeLyrics && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="max-w-4xl mx-auto"
+              >
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="text-xl font-semibold text-pink-200">完整歌词</h3>
+                    {!isEditingLyrics && (
+                      <button
+                        onClick={() => setEditingLyrics(true)}
+                        className="px-4 py-2 bg-pink-500/20 text-pink-300 rounded-lg hover:bg-pink-500/30 transition-colors text-sm"
+                      >
+                        编辑歌词
+                      </button>
+                    )}
+                  </div>
+                  
+                  <div className="text-left space-y-4">
+                    {isEditingLyrics ? (
+                      <textarea
+                        value={completeLyrics}
+                        onChange={(e) => updateCompleteLyrics(e.target.value)}
+                        className="w-full h-96 bg-white/5 border border-white/20 rounded-lg p-4 text-pink-100 leading-relaxed font-medium resize-none focus:outline-none focus:border-pink-400"
+                        placeholder="在这里编辑你的歌词..."
+                      />
+                    ) : (
+                      <pre className="whitespace-pre-wrap text-pink-100 leading-relaxed font-medium">
+                        {completeLyrics}
+                      </pre>
+                    )}
+                  </div>
+                  
+                  {isEditingLyrics && (
+                    <div className="flex justify-end space-x-3 mt-4">
+                      <button
+                        onClick={() => setEditingLyrics(false)}
+                        className="px-4 py-2 bg-gray-500/20 text-gray-300 rounded-lg hover:bg-gray-500/30 transition-colors"
+                      >
+                        取消
+                      </button>
+                      <button
+                        onClick={() => setEditingLyrics(false)}
+                        className="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors"
+                      >
+                        保存
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            )}
+            
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="flex justify-center space-x-4"
+            >
+              <button
+                onClick={() => setStage('select-music-style')}
+                className="px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full font-semibold hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                选择音乐风格
+              </button>
+              <button
+                onClick={() => {
+                  resetForm();
+                  router.push('/');
+                }}
+                className="px-8 py-3 bg-gray-500/20 text-gray-300 rounded-full font-semibold hover:bg-gray-500/30 transition-all duration-300"
+              >
+                重新创作
+              </button>
+            </motion.div>
           </motion.div>
-          <h1 className="text-4xl font-bold text-gradient">正在生成你们的专属情歌...</h1>
-          <p className="text-lg text-pink-200">请稍候</p>
-        </motion.div>
+        </div>
+      </div>
+    );
+  }
+
+  if (stage === 'select-music-style') {
+    return (
+      <div className="min-h-screen">
+        <RomanticBackground />
+        <div className="relative z-10 container mx-auto px-4 py-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-8"
+          >
+            <div className="text-center space-y-4">
+              <Heart className="w-16 h-16 text-pink-400 fill-pink-400 mx-auto" />
+              <h1 className="text-4xl font-bold text-gradient">选择音乐风格</h1>
+              <p className="text-pink-200">为你的情歌选择最合适的音乐风格</p>
+            </div>
+            
+            <MusicStyleSelector
+              onSelect={(style) => setSelectedMusicStyle(style.id)}
+              selectedStyle={selectedMusicStyle}
+            />
+            
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="flex justify-center space-x-4"
+            >
+              <button
+                onClick={() => setStage('complete')}
+                className="px-6 py-3 bg-gray-500/20 text-gray-300 rounded-full font-semibold hover:bg-gray-500/30 transition-all duration-300"
+              >
+                返回歌词
+              </button>
+              <button
+                onClick={() => {
+                  if (selectedMusicStyle) {
+                    // TODO: 调用音乐生成API
+                    toast({
+                      title: '开始生成音乐 🎵',
+                      description: '正在为你的歌词配乐...',
+                    });
+                    console.log('选择的音乐风格:', selectedMusicStyle);
+                    console.log('歌词内容:', completeLyrics);
+                    console.log('歌名:', finalTitle);
+                  } else {
+                    toast({
+                      title: '请选择音乐风格',
+                      description: '请先选择一个音乐风格再提交',
+                      variant: 'destructive',
+                    });
+                  }
+                }}
+                disabled={!selectedMusicStyle}
+                className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
+                  selectedMusicStyle
+                    ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 shadow-lg hover:shadow-xl'
+                    : 'bg-gray-500/20 text-gray-500 cursor-not-allowed'
+                }`}
+              >
+                生成音乐
+              </button>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     );
   }
