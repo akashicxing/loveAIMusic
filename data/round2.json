@@ -1,0 +1,77 @@
+{
+  "id": "round2",
+  "title": "副歌抓手与情感加深",
+  "description": "补充关键句与意象，帮助生成完整歌词",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "coreConfession",
+      "label": "一句\"你想被记住的告白主句\"",
+      "type": "text",
+      "required": true,
+      "placeholder": "不超过15字，如：我的乖乖鼠，十五年如一日",
+      "maxLength": 20
+    },
+    {
+      "id": "mustImages",
+      "label": "必须出现在歌词里的3个意象或细节",
+      "type": "chips",
+      "required": true,
+      "minItems": 3,
+      "maxItems": 3,
+      "placeholder": "如：pp虾、螃蟹、病房外星辰",
+      "maxLengthPerItem": 16
+    },
+    {
+      "id": "chorusVow",
+      "label": "你希望副歌传达的\"承诺/誓言\"是哪种？",
+      "type": "radio",
+      "required": true,
+      "options": [
+        { "value": "standBy", "label": "不离不弃" },
+        { "value": "throughStorm", "label": "风雨同舟" },
+        { "value": "longTime", "label": "来日方长" },
+        { "value": "growOld", "label": "白头到老" },
+        { "value": "againstWorld", "label": "与你对抗全世界" }
+      ]
+    },
+    {
+      "id": "verseFocus",
+      "label": "你更想在主歌强调什么？",
+      "type": "radio",
+      "required": true,
+      "options": [
+        { "value": "memoryDetails", "label": "回忆细节" },
+        { "value": "herCharacter", "label": "她/他的性格" },
+        { "value": "growthTogether", "label": "彼此成长" },
+        { "value": "dailyLife", "label": "生活烟火" }
+      ]
+    },
+    {
+      "id": "factsLimit",
+      "label": "是否限定称呼与年龄/纪年等事实表达（可选）",
+      "type": "text",
+      "required": false,
+      "placeholder": "如：四十一岁、十五年",
+      "maxLength": 24
+    },
+    {
+      "id": "moodAdjectives",
+      "label": "用三个形容词定义歌曲氛围",
+      "type": "chips",
+      "required": true,
+      "minItems": 3,
+      "maxItems": 3,
+      "placeholder": "如：深情、克制、温暖",
+      "maxLengthPerItem": 6
+    },
+    {
+      "id": "avoidConfirm",
+      "label": "需要避开的表达/词汇（再次确认）",
+      "type": "textarea",
+      "required": false,
+      "placeholder": "用逗号分隔不希望出现的词语",
+      "maxLength": 120
+    }
+  ]
+}

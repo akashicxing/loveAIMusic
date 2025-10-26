@@ -1,0 +1,110 @@
+{
+  "id": "round1",
+  "title": "爱情档案",
+  "description": "用几道题，帮我们勾勒你们的故事轮廓",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "recipientNickname",
+      "label": "你想把歌送给谁？称呼/昵称",
+      "type": "text",
+      "required": true,
+      "placeholder": "如：乖乖鼠",
+      "maxLength": 16
+    },
+    {
+      "id": "relationship",
+      "label": "你们的关系",
+      "type": "select",
+      "required": true,
+      "options": [
+        { "value": "couple", "label": "情侣" },
+        { "value": "spouse", "label": "夫妻" },
+        { "value": "fiance", "label": "未婚夫妻" },
+        { "value": "crush", "label": "暗恋/表白" },
+        { "value": "partners", "label": "伴侣" }
+      ]
+    },
+    {
+      "id": "metYear",
+      "label": "相识或在一起的年份",
+      "type": "number",
+      "required": false,
+      "placeholder": "如：2010",
+      "min": 1950,
+      "max": 2100
+    },
+    {
+      "id": "keyMoments",
+      "label": "重要节点（可多选）",
+      "type": "checkbox",
+      "required": false,
+      "options": [
+        { "value": "met", "label": "相识" },
+        { "value": "married", "label": "结婚" },
+        { "value": "ldr", "label": "异地" },
+        { "value": "illness", "label": "病中守护" },
+        { "value": "proposal", "label": "求婚" },
+        { "value": "trip", "label": "第一次旅行" },
+        { "value": "baby", "label": "有了孩子" },
+        { "value": "reconcile", "label": "和解" },
+        { "value": "reunion", "label": "重逢" }
+      ],
+      "maxSelect": 4
+    },
+    {
+      "id": "memoryScenes",
+      "label": "你们回忆里的三个具体场景",
+      "type": "chips",
+      "required": true,
+      "placeholder": "如：海鲜自助、病房外那夜星辰、第一次跨城夜跑",
+      "minItems": 2,
+      "maxItems": 3,
+      "maxLengthPerItem": 24
+    },
+    {
+      "id": "coreTheme",
+      "label": "你最想表达的核心主题",
+      "type": "radio",
+      "required": true,
+      "options": [
+        { "value": "guard", "label": "守护" },
+        { "value": "gratitude", "label": "感恩" },
+        { "value": "reconcile", "label": "和解" },
+        { "value": "confess", "label": "告白" },
+        { "value": "rekindle", "label": "重燃" },
+        { "value": "promise", "label": "承诺" },
+        { "value": "miss", "label": "思念" }
+      ]
+    },
+    {
+      "id": "privateCode",
+      "label": "你们的口头禅或只属于彼此的\"暗号\"（可选）",
+      "type": "text",
+      "required": false,
+      "placeholder": "如：小笨蛋、到点喝水啦",
+      "maxLength": 24
+    },
+    {
+      "id": "songTone",
+      "label": "希望歌曲基调",
+      "type": "radio",
+      "required": true,
+      "options": [
+        { "value": "gentle", "label": "温柔" },
+        { "value": "passionate", "label": "热烈" },
+        { "value": "nostalgic", "label": "怀旧" },
+        { "value": "firm", "label": "坚定" },
+        { "value": "playful", "label": "俏皮" }
+      ]
+    },
+    {
+      "id": "avoidList",
+      "label": "是否有需要避开的敏感词或不想提及的内容（可选）",
+      "type": "textarea",
+      "required": false,
+      "placeholder": "用逗号分隔不希望出现的词语",
+      "maxLength": 120
+    }
+  ]
+}

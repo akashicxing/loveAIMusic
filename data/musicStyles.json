@@ -1,0 +1,195 @@
+{
+  "version": "1.1.0",
+  "styles": [
+    {
+      "id": "style_1",
+      "name": "深情抒情民谣",
+      "englishName": "Deep Emotional Ballad",
+      "description": "钢琴主导的温暖民谣，适合深情表白",
+      "tags": ["抒情", "民谣", "温暖", "深情"],
+      "mood": "温柔深情",
+      "tempo": "慢板 (65-75 BPM)",
+      "difficulty": "简单",
+      "previewAudio": "https://catname-1255475898.cos.ap-hongkong.myqcloud.com/nameSpace/webFile/aimusic/long/MP3/%E6%88%91%E7%9A%84%E4%B9%96%E4%B9%96%E9%BC%A0-%E6%B7%B1%E6%83%85%E6%B0%91%E8%B0%A3.mp3",
+      "sunoPromptTemplate": "Emotional Chinese ballad, slow tempo 65-75 BPM, acoustic guitar fingerpicking, soft piano accompaniment, gentle strings arrangement, [VOCAL_TYPE] tender vocals with raw emotion, intimate atmosphere, folk storytelling style, subtle harmonica touches, warm reverb, heartfelt lyrics about deep love and commitment, acoustic drums with brushes, melancholic yet hopeful melody, perfect for quiet romantic moments, traditional Chinese instruments like erhu subtly woven in background",
+      "vocalSuggestions": ["soft male", "gentle female", "male and female duet"]
+    },
+    {
+      "id": "style_2",
+      "name": "甜蜜流行情歌",
+      "englishName": "Sweet Pop Love Song",
+      "description": "欢快明亮的流行风格，适合年轻情侣",
+      "tags": ["流行", "甜蜜", "欢快", "年轻"],
+      "mood": "欢快甜蜜",
+      "tempo": "中快板 (100-110 BPM)",
+      "difficulty": "简单",
+      "previewAudio": "https://catname-1255475898.cos.ap-hongkong.myqcloud.com/nameSpace/webFile/aimusic/long/MP3/%E6%88%91%E7%9A%84%E4%B9%96%E4%B9%96%E9%BC%A0-%E7%94%9C%E8%9C%9C%E6%B5%81%E8%A1%8C.mp3",
+      "sunoPromptTemplate": "Upbeat Chinese pop love song, bright tempo 100-110 BPM, catchy melody with memorable hooks, modern production with synthesizers, electric guitar riffs, bouncy bass lines, [VOCAL_TYPE] cheerful vocals with sweet harmonies, radio-friendly arrangement, uplifting and joyful mood, perfect for young couples, contemporary R&B influences, polished studio sound, celebration of new love and happiness, danceable rhythm, mainstream appeal with romantic lyrics",
+      "vocalSuggestions": ["sweet female", "male", "alternating male and female"]
+    },
+    {
+      "id": "style_4",
+      "name": "现代R&B情歌",
+      "englishName": "Modern R&B Love Song",
+      "description": "性感柔滑的R&B风格，适合成熟恋人",
+      "tags": ["R&B", "性感", "成熟", "都市"],
+      "mood": "性感浪漫",
+      "tempo": "中慢板 (85-95 BPM)",
+      "difficulty": "中等",
+      "previewAudio": "https://catname-1255475898.cos.ap-hongkong.myqcloud.com/nameSpace/webFile/aimusic/long/MP3/%E6%88%91%E7%9A%84%E4%B9%96%E4%B9%96%E9%BC%A0-%E7%8E%B0%E4%BB%A3RB.mp3",
+      "sunoPromptTemplate": "Smooth Chinese R&B ballad, sultry tempo 85-95 BPM, electric piano chords, deep bass grooves, sophisticated drum patterns, [VOCAL_TYPE] silky smooth vocals with runs and melismas, jazz-influenced chord progressions, modern production with subtle auto-tune, romantic and sensual atmosphere, perfect for mature couples, saxophone solos, lush string sections, urban contemporary sound, emotional depth with technical vocal prowess, late-night romantic vibes",
+      "vocalSuggestions": ["soulful female", "deep male", "male and female duet"]
+    },
+    {
+      "id": "style_7",
+      "name": "电子流行风格",
+      "englishName": "Electronic Pop Style",
+      "description": "现代电子流行，适合数字时代的爱情",
+      "tags": ["电子", "现代", "未来", "都市"],
+      "mood": "未来浪漫",
+      "tempo": "中快板 (110-120 BPM)",
+      "difficulty": "中等",
+      "previewAudio": "https://catname-1255475898.cos.ap-hongkong.myqcloud.com/nameSpace/webFile/aimusic/long/MP3/%E6%88%91%E7%9A%84%E4%B9%96%E4%B9%96%E9%BC%A0-%E7%94%B5%E5%AD%90%E6%B5%81%E8%A1%8C.mp3",
+      "sunoPromptTemplate": "Modern Chinese electro-pop love song, upbeat tempo 110-120 BPM, synthesizer melodies, electronic beats with human feel, dreamy pad sounds, [VOCAL_TYPE] vocals with vocoder effects on harmonies, futuristic yet romantic atmosphere, perfect for young digital generation, dance-pop influences, bright and colorful production, catchy electronic hooks, modern love in digital age theme, club-friendly but emotional, neon-lit romantic vibes, contemporary urban sound",
+      "vocalSuggestions": ["female", "male", "mixed vocals"]
+    },
+    {
+      "id": "style_8",
+      "name": "古风情歌",
+      "englishName": "Traditional Chinese Style",
+      "description": "传统中国风格，融合古典与现代",
+      "tags": ["古风", "传统", "文化", "典雅"],
+      "mood": "古典雅致",
+      "tempo": "慢板 (70-80 BPM)",
+      "difficulty": "困难",
+      "previewAudio": "https://catname-1255475898.cos.ap-hongkong.myqcloud.com/nameSpace/webFile/aimusic/long/MP3/%E6%88%91%E7%9A%84%E4%B9%96%E4%B9%96%E9%BC%A0-%E5%8F%A4%E9%A3%8E%E6%83%85%E6%AD%8C.mp3",
+      "sunoPromptTemplate": "Traditional Chinese love ballad, graceful tempo 70-80 BPM, classical Chinese instruments including guzheng, pipa, dizi flute, erhu strings, traditional percussion, [VOCAL_TYPE] operatic vocal influences mixed with modern singing, pentatonic melodies, ancient poetry-inspired lyrics, cultural heritage atmosphere, perfect for traditional weddings, bamboo flute solos, temple bell accents, silk road romantic imagery, timeless Eastern beauty, classical Chinese musical scales and harmonies",
+      "vocalSuggestions": ["gentle female", "soft male", "male and female duet"]
+    },
+    {
+      "id": "style_9",
+      "name": "复古City Pop恋爱律动",
+      "englishName": "Retro City Pop Love Groove",
+      "description": "80年代风格的都市流行，充满复古魅力",
+      "tags": ["City Pop", "复古", "都市", "律动"],
+      "mood": "复古时尚",
+      "tempo": "中快板 (102-112 BPM)",
+      "difficulty": "中等",
+      "previewAudio": "https://catname-1255475898.cos.ap-hongkong.myqcloud.com/nameSpace/webFile/aimusic/long/MP3/%E6%88%91%E7%9A%84%E4%B9%96%E4%B9%96%E9%BC%A0-%E5%A4%8D%E5%8F%A4citypop.mp3",
+      "sunoPromptTemplate": "Bright 80s-inspired Mandarin Chinese city pop, 102-112 BPM, clean chorus guitars, slick slap bass, glossy synths, tight drums, [VOCAL_TYPE] playful and flirty vocals with crisp Mandarin phrases for tone clarity, catchy hook with call-and-response background vocals, jazzy chord colors including maj7 and 9th chords, polished sunny production with neon nostalgia atmosphere, minimal English ad-libs, perfect summer night drive energy, retro romantic vibes",
+      "vocalSuggestions": ["sweet female", "soft male", "alternating male and female"]
+    },
+    {
+      "id": "style_11",
+      "name": "电影感管弦流行抒情",
+      "englishName": "Cinematic Orchestral Pop Ballad",
+      "description": "史诗级管弦乐流行，如电影原声般震撼",
+      "tags": ["电影", "管弦乐", "史诗", "震撼"],
+      "mood": "史诗浪漫",
+      "tempo": "中板 (88-100 BPM)",
+      "difficulty": "困难",
+      "previewAudio": "https://catname-1255475898.cos.ap-hongkong.myqcloud.com/nameSpace/webFile/aimusic/long/MP3/%E6%88%91%E7%9A%84%E4%B9%96%E4%B9%96%E9%BC%A0-%E7%94%B5%E5%BD%B1%E4%B8%BB%E9%A2%98%E6%9B%B2.mp3",
+      "sunoPromptTemplate": "Grand Mandarin Chinese orchestral pop ballad, 88-100 BPM, piano-led arrangement with rich strings, French horn swells, cinematic drums, [VOCAL_TYPE] vocals building from intimate verse to epic chorus lift, sweeping crescendos with tear-jerker hook, articulate Mandarin diction emphasizing long vowels, stepwise melody lines, choir pads, lush hall reverb, timeless wedding-worthy emotional impact, movie soundtrack quality",
+      "vocalSuggestions": ["powerful male", "soulful female", "mixed vocals"]
+    },
+    {
+      "id": "style_12",
+      "name": "未来贝斯/EDM告白神曲",
+      "englishName": "Future Bass / EDM Love Anthem",
+      "description": "充满未来感的电子舞曲，适合告白场合",
+      "tags": ["EDM", "Future Bass", "告白", "节庆"],
+      "mood": "狂欢浪漫",
+      "tempo": "快板 (142-150 BPM)",
+      "difficulty": "中等",
+      "previewAudio": "https://catname-1255475898.cos.ap-hongkong.myqcloud.com/nameSpace/webFile/aimusic/long/MP3/%E6%88%91%E7%9A%84%E4%B9%96%E4%B9%96%E9%BC%A0-EDM%E5%91%8A%E7%99%BD.mp3",
+      "sunoPromptTemplate": "Euphoric Mandarin Chinese future bass love anthem, 142-150 BPM, detuned supersaws, sidechained pads, bright plucks, vocal chops, minimal piano verse with riser pre-chorus building to explosive drop, [VOCAL_TYPE] anthemic vocals with simple clear Mandarin hook words avoiding tongue-twisters, punchy snare with tight low end, shiny clean mix, uplifting festival-ready energy, perfect for love confessions and celebrations",
+      "vocalSuggestions": ["female", "male", "alternating male and female"]
+    }
+  ],
+  "lyrics": {
+    "title": "我的乖乖鼠",
+    "structure": [
+      { "section": "前奏", "sectionEn": "Intro", "content": "轻柔的钢琴旋律，渐入弦乐" },
+      { "section": "主歌1", "sectionEn": "Verse 1", "content": "翻开记忆的第一页\n四周就写下了永远\n你圆润的笑容藏着星辰\n善良如海却脾气如火\n我甘愿做你掌心的温存" },
+      { "section": "主歌2", "sectionEn": "Verse 2", "content": "海鲜自助的传说还在延续\n每一家店都败在我们手里\n你偷偷扛起所有的重量\n让我的肩膀只需要拥抱你\npp虾和螃蟹见证我们的爱情" },
+      { "section": "副歌", "sectionEn": "Chorus", "content": "我的乖乖鼠，十五年如一日\n你是风暴中那盏不熄的明灯\n我的乖乖鼠，最深沉的守护\n病房外那夜星辰为你作证\n在这个薄情似水的世界里\n你给了我比山还厚重的爱" },
+      { "section": "间奏", "sectionEn": "Interlude", "content": "弦乐与吉他的对话" },
+      { "section": "主歌3", "sectionEn": "Verse 3", "content": "倔强的外表下藏着柔软\n四十一岁依然是我的少女\n你说脾气不好要我包容\n却在我最需要时成为巨人\n默默背起生活的重担" },
+      { "section": "副歌", "sectionEn": "Chorus", "content": "我的乖乖鼠，十五年如一日\n你是风暴中那盏不熄的明灯\n我的乖乖鼠，最深沉的守护\n病房外那夜星辰为你作证\n爱情不是童话里的完美\n而是你在至暗时刻的不离不弃" },
+      { "section": "桥段", "sectionEn": "Bridge", "content": "时间会让容颜老去\n但你在我眼中永远是那个\n愿意为爱奋不顾身的女孩\n每一章都写着你的温度\n我的乖乖鼠，我的此生挚爱" },
+      { "section": "尾声副歌", "sectionEn": "Outro Chorus", "content": "我的乖乖鼠，下个十五年\n还要一起踏遍山河与海鲜\n我的乖乖鼠，我们彼此的依靠\n无论何时何地，岁月漫长，风雨同舟\n最美的相遇，永远的家" },
+      { "section": "结尾", "sectionEn": "Ending", "content": "钢琴独奏渐弱，弦乐温柔收尾" }
+    ],
+    "theme": "十五年爱情的深情告白",
+    "keywords": ["乖乖鼠", "十五年", "守护", "海鲜自助", "病房", "星辰", "不离不弃"],
+    "mood": "深情感人",
+    "language": "中文"
+  },
+  "vocab": {
+    "vocalTypes": {
+      "male": [
+        { "value": "male", "label": "男声", "description": "标准男声" },
+        { "value": "deep male", "label": "低沉男声", "description": "深沉有磁性的男声" },
+        { "value": "soft male", "label": "温柔男声", "description": "温和柔软的男声" },
+        { "value": "powerful male", "label": "有力男声", "description": "强劲有力的男声" }
+      ],
+      "female": [
+        { "value": "female", "label": "女声", "description": "标准女声" },
+        { "value": "sweet female", "label": "甜美女声", "description": "甜美可爱的女声" },
+        { "value": "soulful female", "label": "深情女声", "description": "富有感情的女声" },
+        { "value": "gentle female", "label": "温柔女声", "description": "轻柔温和的女声" }
+      ],
+      "mixed": [
+        { "value": "male and female duet", "label": "男女对唱", "description": "男女声配合演唱" },
+        { "value": "mixed vocals", "label": "混声合唱", "description": "多人混合演唱" },
+        { "value": "alternating male and female", "label": "男女交替", "description": "男女声交替演唱" }
+      ]
+    }
+  },
+  "taxonomy": {
+    "categories": [
+      { "id": "ballad", "name": "抒情类", "styles": ["style_1", "style_8", "style_11"] },
+      { "id": "pop", "name": "流行类", "styles": ["style_2", "style_7", "style_9"] },
+      { "id": "rnb", "name": "R&B类", "styles": ["style_4"] },
+      { "id": "electronic", "name": "电子类", "styles": ["style_7", "style_12"] },
+      { "id": "traditional", "name": "传统类", "styles": ["style_8"] }
+    ],
+    "moods": [
+      { "id": "romantic", "name": "浪漫", "styles": ["style_1", "style_2", "style_4", "style_9", "style_11"] },
+      { "id": "passionate", "name": "激情", "styles": ["style_12"] },
+      { "id": "gentle", "name": "温柔", "styles": ["style_1", "style_8"] },
+      { "id": "nostalgic", "name": "怀旧", "styles": ["style_9"] },
+      { "id": "modern", "name": "现代", "styles": ["style_2", "style_4", "style_7", "style_12"] }
+    ],
+    "tempos": [
+      { "id": "slow", "name": "慢板", "range": "60-80 BPM", "styles": ["style_1", "style_8"] },
+      { "id": "medium-slow", "name": "中慢板", "range": "80-95 BPM", "styles": ["style_4"] },
+      { "id": "medium", "name": "中板", "range": "95-110 BPM", "styles": ["style_9", "style_11"] },
+      { "id": "medium-fast", "name": "中快板", "range": "110-130 BPM", "styles": ["style_2", "style_7"] },
+      { "id": "fast", "name": "快板", "range": "130+ BPM", "styles": ["style_12"] }
+    ],
+    "difficulties": [
+      { "id": "easy", "name": "简单", "description": "易于演唱，适合初学者", "styles": ["style_1", "style_2"] },
+      { "id": "medium", "name": "中等", "description": "需要一定技巧，适合有经验者", "styles": ["style_4", "style_7", "style_9", "style_12"] },
+      { "id": "hard", "name": "困难", "description": "需要专业技巧，适合高级演唱者", "styles": ["style_8", "style_11"] }
+    ]
+  },
+  "usage": {
+    "instructions": "在 sunoPromptTemplate 中找到 [VOCAL_TYPE] 标记，将其替换为 vocab.vocalTypes 中任一选项的 value",
+    "example": "将 [VOCAL_TYPE] 替换为 'sweet female' 即可生成甜美女声版本",
+    "tips": [
+      "根据歌曲风格选择合适的演唱者类型",
+      "可以参考各 style.vocalSuggestions 的推荐选项",
+      "混声选项适合制作更丰富的音乐层次",
+      "所有风格可复用相同歌词，但根据风格调整编配与演绎"
+    ]
+  },
+  "metadata": {
+    "language": "Chinese (Simplified)",
+    "targetPlatform": "Suno AI",
+    "songTitle": "我的乖乖鼠",
+    "lyricsIncluded": true,
+    "totalStyles": 8,
+    "lastUpdated": "2025-09-26"
+  }
+}
