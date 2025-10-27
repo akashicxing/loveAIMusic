@@ -1,0 +1,109 @@
+.works {
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.works-header {
+  background: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.works-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.create-btn {
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+.works-content {
+  height: calc(100vh - 80px);
+  padding: 20px;
+}
+
+.works-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.work-item {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.work-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.work-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.work-date {
+  font-size: 12px;
+  color: #666;
+}
+
+.work-content {
+  margin-bottom: 16px;
+}
+
+.work-lyrics {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.work-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  background: white;
+  color: #ff6b9d;
+  border: 1px solid #ff6b9d;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  
+  &.playing {
+    background: #ff6b9d;
+    color: white;
+  }
+  
+  &.delete-btn {
+    color: #f44336;
+    border-color: #f44336;
+    
+    &:active {
+      background: #f44336;
+      color: white;
+    }
+  }
+  
+  &:active {
+    background: #ff6b9d;
+    color: white;
+  }
+}

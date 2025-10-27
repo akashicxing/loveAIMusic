@@ -1,0 +1,144 @@
+.profile {
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.profile-header {
+  background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+  padding: 40px 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin-right: 16px;
+  
+  &.default-avatar {
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .avatar-text {
+      font-size: 24px;
+      color: white;
+    }
+  }
+}
+
+.user-details {
+  .user-name {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 4px;
+  }
+  
+  .user-desc {
+    display: block;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.vip-badge {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 6px 12px;
+  
+  .vip-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+  }
+}
+
+.profile-content {
+  padding: 20px;
+}
+
+.stats-section {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item {
+  text-align: center;
+  
+  .stat-number {
+    display: block;
+    font-size: 24px;
+    font-weight: 600;
+    color: #ff6b9d;
+    margin-bottom: 4px;
+  }
+  
+  .stat-label {
+    display: block;
+    font-size: 12px;
+    color: #666;
+  }
+}
+
+.menu-section {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  &:active {
+    background: #f8f9fa;
+  }
+}
+
+.menu-icon {
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+.menu-text {
+  flex: 1;
+  font-size: 16px;
+  color: #333;
+}
+
+.menu-arrow {
+  font-size: 18px;
+  color: #ccc;
+}
+
+.profile-footer {
+  padding: 20px;
+}
+
+.logout-btn {
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 24px;
+}

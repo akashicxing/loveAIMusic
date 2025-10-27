@@ -1,0 +1,57 @@
+export default {
+  description: "为爱而歌 - AI情歌创作平台小程序",
+  packages: "**/*",
+  pages: [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/create/create",
+    "pages/works/works",
+    "pages/profile/profile"
+  ],
+  window: {
+    backgroundTextStyle: "light",
+    navigationBarBackgroundColor: "#ff6b9d",
+    navigationBarTitleText: "为爱而歌",
+    navigationBarTextStyle: "white",
+    backgroundColor: "#ff6b9d"
+  },
+  tabBar: {
+    color: "#666666",
+    selectedColor: "#ff6b9d",
+    backgroundColor: "#ffffff",
+    borderStyle: "black",
+    list: [
+      {
+        pagePath: "pages/index/index",
+        text: "首页",
+        iconPath: "assets/icons/home.png",
+        selectedIconPath: "assets/icons/home-active.png"
+      },
+      {
+        pagePath: "pages/create/create",
+        text: "创作",
+        iconPath: "assets/icons/create.png",
+        selectedIconPath: "assets/icons/create-active.png"
+      },
+      {
+        pagePath: "pages/works/works",
+        text: "作品",
+        iconPath: "assets/icons/works.png",
+        selectedIconPath: "assets/icons/works-active.png"
+      },
+      {
+        pagePath: "pages/profile/profile",
+        text: "我的",
+        iconPath: "assets/icons/profile.png",
+        selectedIconPath: "assets/icons/profile-active.png"
+      }
+    ]
+  },
+  permission: {
+    "scope.userInfo": {
+      "desc": "你的信息将用于小程序体验"
+    }
+  },
+  requiredBackgroundModes: ["audio"],
+  sitemapLocation: "sitemap.json"
+}

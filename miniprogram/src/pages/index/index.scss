@@ -1,0 +1,102 @@
+.index {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+  padding: 0;
+}
+
+.hero-section {
+  padding: 60px 40px 40px;
+  text-align: center;
+  color: white;
+}
+
+.hero-content {
+  margin-bottom: 40px;
+}
+
+.hero-title {
+  display: block;
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-subtitle {
+  display: block;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  opacity: 0.9;
+}
+
+.hero-description {
+  display: block;
+  font-size: 16px;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.hero-image {
+  margin: 40px 0;
+}
+
+.hero-icon {
+  font-size: 80px;
+  display: block;
+}
+
+.action-section {
+  padding: 0 40px 40px;
+  text-align: center;
+}
+
+.main-action {
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 18px;
+  padding: 16px 32px;
+}
+
+.features-section {
+  padding: 40px 20px;
+  background: white;
+  margin: 0 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card {
+  text-align: center;
+  margin-bottom: 30px;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.feature-icon {
+  display: block;
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.feature-title {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.feature-desc {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.login-section {
+  padding: 40px;
+  text-align: center;
+}

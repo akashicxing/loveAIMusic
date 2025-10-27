@@ -1,0 +1,142 @@
+.create {
+  min-height: 100vh;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-header {
+  background: white;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.create-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.step-indicator {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.create-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.step-content {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.step-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.step-desc {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.questions {
+  .question-item {
+    margin-bottom: 24px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  .question-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  
+  .answer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .answer-btn {
+    background: white;
+    color: #ff6b9d;
+    border: 2px solid #ff6b9d;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    
+    &:active {
+      background: #ff6b9d;
+      color: white;
+    }
+  }
+}
+
+.lyrics-content {
+  .lyrics-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    white-space: pre-line;
+  }
+}
+
+.style-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.style-btn {
+  background: white;
+  color: #ff6b9d;
+  border: 2px solid #ff6b9d;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  
+  &:active {
+    background: #ff6b9d;
+    color: white;
+  }
+}
+
+.music-content {
+  text-align: center;
+  
+  .music-title {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+}
+
+.create-footer {
+  padding: 20px;
+  display: flex;
+  gap: 12px;
+  
+  .btn-primary,
+  .btn-secondary {
+    flex: 1;
+  }
+}

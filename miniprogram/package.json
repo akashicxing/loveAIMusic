@@ -1,0 +1,83 @@
+{
+  "name": "loveaimusic-miniprogram",
+  "version": "1.0.0",
+  "private": true,
+  "description": "为爱而歌 - AI情歌创作平台小程序",
+  "templateInfo": {
+    "name": "react-ts",
+    "typescript": true,
+    "css": "sass"
+  },
+  "scripts": {
+    "build:weapp": "taro build --type weapp",
+    "dev:weapp": "npm run build:weapp -- --watch",
+    "build:swan": "taro build --type swan",
+    "dev:swan": "npm run build:swan -- --watch",
+    "build:alipay": "taro build --type alipay",
+    "dev:alipay": "npm run build:alipay -- --watch",
+    "build:tt": "taro build --type tt",
+    "dev:tt": "npm run build:tt -- --watch",
+    "build:h5": "taro build --type h5",
+    "dev:h5": "npm run build:h5 -- --watch",
+    "build:qq": "taro build --type qq",
+    "dev:qq": "npm run dev:qq -- --watch",
+    "build:jd": "taro build --type jd",
+    "dev:jd": "npm run dev:jd -- --watch",
+    "build:quickapp": "taro build --type quickapp",
+    "dev:quickapp": "npm run dev:quickapp -- --watch"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "author": "akashicxing",
+  "dependencies": {
+    "@tarojs/components": "4.1.7",
+    "@tarojs/helper": "4.1.7",
+    "@tarojs/plugin-platform-alipay": "4.1.7",
+    "@tarojs/plugin-platform-h5": "4.1.7",
+    "@tarojs/plugin-platform-jd": "4.1.7",
+    "@tarojs/plugin-platform-qq": "4.1.7",
+    "@tarojs/plugin-platform-swan": "4.1.7",
+    "@tarojs/plugin-platform-tt": "4.1.7",
+    "@tarojs/plugin-platform-weapp": "4.1.7",
+    "@tarojs/react": "^4.1.7",
+    "@tarojs/runtime": "4.1.7",
+    "@tarojs/shared": "4.1.7",
+    "@tarojs/taro": "4.1.7",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.0",
+    "@babel/plugin-proposal-class-properties": "7.14.5",
+    "@babel/preset-env": "^7.4.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.0.0",
+    "@tarojs/cli": "4.1.7",
+    "@tarojs/plugin-framework-react": "^4.1.7",
+    "@tarojs/webpack5-runner": "4.1.7",
+    "@types/react": "^18.0.0",
+    "@types/webpack-env": "^1.13.6",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "babel-preset-taro": "4.1.7",
+    "eslint": "^8.12.0",
+    "eslint-config-taro": "4.1.7",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-react": "^7.8.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "sass": "^1.49.0",
+    "style-loader": "3.3.1",
+    "typescript": "^4.1.0",
+    "webpack": "5.91.0"
+  }
+}
